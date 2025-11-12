@@ -2,18 +2,13 @@ package com.andreas.authservice.controller;
 
 import com.andreas.authservice.model.PromotionRequest;
 import com.andreas.authservice.service.AdminService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/role")
+@RequestMapping("/admin")
 public class AdminController {
 
     private AdminService adminService;
@@ -22,11 +17,14 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @PostMapping("/promote/user")
+    @DeleteMapping("/delete/user/{username}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> promote(@RequestBody PromotionRequest request){
-        adminService.promote(request.username());
-        return ResponseEntity.ok("User Promoted");
+    public ResponseEntity<String> deleteUser(@PathVariable String username){
+        boolean deleted = adminService.deleteUser(username);
+        if(deleted){
+           return ResponseEntity.ok("User " + username + " was deleted");
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }
