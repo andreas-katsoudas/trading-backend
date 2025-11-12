@@ -1,0 +1,16 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Maven
+target/
+
+# Logs
+*.log
+
+# Docker
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db

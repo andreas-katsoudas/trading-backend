@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: Market Trading Service
+  datasource:
+    url: jdbc:postgresql://postgres:5432/mydb
+    username: postgres
+    password: postgres123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  redis:
+    host: redis
+    port: 6379
+    password:
+    timeout: 5000ms
+    lettuce:
+      shutdown-timeout: 100ms
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: 1000ms
+      client-name: market-trading-service
+      validate-connection: true
+
+jwt:
+  secret: Qw8vP9!fR2#xT7mZkL1$yHbU4&dSjN3pG6wC0aV8
+
+server:
+  port: 8080
+  address: 0.0.0.0  # allows host to access the container
+
+kafka:
+  bootstrap-servers: kafka:9092
+  group-id: trading-service-group

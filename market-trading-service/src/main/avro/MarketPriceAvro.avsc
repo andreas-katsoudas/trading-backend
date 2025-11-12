@@ -1,0 +1,28 @@
+{
+  "type": "record",
+  "name": "MarketPriceAvro",
+  "namespace": "com.andreas.common.avro",
+  "fields": [
+    {
+      "name": "symbol",
+      "type": "string",
+      "doc": "Trading pair symbol, e.g., BTC/USD"
+    },
+    {
+      "name": "price",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 15,
+        "scale": 6
+      },
+      "doc": "Price as BigDecimal with up to 15 digits, 6 after decimal"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "logicalType": "timestamp-millis",
+      "doc": "Epoch millis timestamp of the price"
+    }
+  ]
+}

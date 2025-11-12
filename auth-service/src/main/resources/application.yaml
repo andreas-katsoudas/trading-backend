@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: jdbc:postgresql://db:5432/mydb
+    username: postgres
+    password: postgres123
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8080
+
+jwt:
+  secret: Qw8vP9!fR2#xT7mZkL1$yHbU4&dSjN3pG6wC0aV8
+  expiration: 36000000
+roles:
+  admin:
+    password: admin123

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Market Data Service
+
+server:
+  port: 8080
+  address: 0.0.0.0  # allows host to access the container
+
+kafka:
+  bootstrap-servers: kafka:9092  # use the service name from docker-compose
+
+marketdata:
+  update-interval-ms: 30000  # every 30 seconds
+  symbols:
+    - BTC/USD
+    - ETH/USD
+    - AAPL
+    - GOOG
+    - TSLA
