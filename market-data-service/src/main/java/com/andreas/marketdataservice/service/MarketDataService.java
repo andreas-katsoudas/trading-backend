@@ -27,7 +27,6 @@ public class MarketDataService {
                              MarketDataProperties properties) {
         this.kafkaTemplate = kafkaTemplate;
         this.objectMapper = new ObjectMapper();
-        // initialize with configured symbols
         properties.getSymbols().forEach(s ->
                 lastPrices.put(s, BigDecimal.valueOf(100 + new Random().nextInt(900)))
         );
@@ -50,11 +49,10 @@ public class MarketDataService {
     }
 
     private MarketPriceAvro buildMarketPriceAvro(String symbol, BigDecimal newPrice) {
-        MarketPriceAvro marketPrice = MarketPriceAvro.newBuilder()
+        return MarketPriceAvro.newBuilder()
                 .setPrice(newPrice)
                 .setSymbol(symbol)
                 .setTimestamp(Instant.now().toEpochMilli())
                 .build();
-        return marketPrice;
     }
 }
