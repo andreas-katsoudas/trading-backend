@@ -19,7 +19,7 @@ public class JwtUtil {
             Key key = Keys.hmacShaKeyFor(secret.getBytes());
             Jwts.parser()
                     .setSigningKey(key)
-                    .parseClaimsJws(token); // will throw exception if invalid
+                    .parseClaimsJws(token);
             return true;
         } catch (JwtException | IllegalArgumentException e) {
             return false;

@@ -21,6 +21,9 @@ public class KafkaProducerConfig {
     @Value("${kafka.bootstrap-servers}")
     private String host;
 
+    @Value("${kafka.schema-registry")
+    private String schemaRegistry;
+
     @Bean
     public ProducerFactory<String, MarketPriceAvro> producerFactory(){
 
@@ -28,7 +31,7 @@ public class KafkaProducerConfig {
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, host);
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
-        config.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://schema-registry:8085");
+        config.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaRegistry);
 
         return new DefaultKafkaProducerFactory<>(config);
     }

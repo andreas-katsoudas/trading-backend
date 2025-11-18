@@ -3,7 +3,6 @@ package com.andreas.markettradingservice.service;
 import com.andreas.markettradingservice.model.MarketPriceData;
 import com.andreas.markettradingservice.repository.MarketPriceDataRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service

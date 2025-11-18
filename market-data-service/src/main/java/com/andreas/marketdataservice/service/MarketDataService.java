@@ -39,8 +39,7 @@ public class MarketDataService {
         for (String symbol : lastPrices.keySet()) {
             BigDecimal currentPrice = lastPrices.get(symbol);
             BigDecimal delta = BigDecimal.valueOf((random.nextDouble() - 0.5) * 5);
-            BigDecimal newPrice = currentPrice.add(delta).max(BigDecimal.ZERO);
-            newPrice = newPrice.setScale(6, RoundingMode.HALF_UP);
+            BigDecimal newPrice = currentPrice.add(delta).max(BigDecimal.ZERO).setScale(6, RoundingMode.HALF_UP);
 
             MarketPriceAvro marketPrice = buildMarketPriceAvro(symbol, newPrice);
             kafkaTemplate.send("market-data", marketPrice);
@@ -50,7 +49,7 @@ public class MarketDataService {
         }
     }
 
-    private static MarketPriceAvro buildMarketPriceAvro(String symbol, BigDecimal newPrice) {
+    private MarketPriceAvro buildMarketPriceAvro(String symbol, BigDecimal newPrice) {
         MarketPriceAvro marketPrice = MarketPriceAvro.newBuilder()
                 .setPrice(newPrice)
                 .setSymbol(symbol)

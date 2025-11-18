@@ -34,7 +34,6 @@ class MarketDataServiceTest {
         MarketDataProperties properties = new MarketDataProperties();
         properties.setSymbols(List.of("BTC", "ETH"));
 
-        // ✅ Mock Kafka send to return a completed future (non-deprecated)
         CompletableFuture<SendResult<String, MarketPriceAvro>> future =
                 CompletableFuture.completedFuture(new SendResult<>(null, (RecordMetadata) null));
         when(kafkaTemplate.send(any(String.class), any(MarketPriceAvro.class))).thenReturn(future);
