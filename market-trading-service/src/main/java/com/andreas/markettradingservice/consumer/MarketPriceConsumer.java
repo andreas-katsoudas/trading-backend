@@ -2,7 +2,7 @@ package com.andreas.markettradingservice.consumer;
 
 import com.andreas.common.avro.MarketPriceAvro;
 import com.andreas.markettradingservice.model.MarketPriceData;
-import com.andreas.markettradingservice.service.MarketDataService;
+import com.andreas.markettradingservice.service.MarketHandleDataService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class MarketPriceConsumer {
 
-    private final MarketDataService service;
+    private final MarketHandleDataService service;
 
-    public MarketPriceConsumer(MarketDataService service) {
+    public MarketPriceConsumer(MarketHandleDataService service) {
         this.service = service;
     }
     @KafkaListener(topics = "market-data", groupId = "trading-service-group")

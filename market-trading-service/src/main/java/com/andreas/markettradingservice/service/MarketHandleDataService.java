@@ -6,15 +6,15 @@ import com.andreas.markettradingservice.repository.MarketPriceDataRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MarketDataService {
+public class MarketHandleDataService {
 
     private final MarketCacheService cacheService;
     private final MarketPriceDataRepository repository;
     private final MarketPricePublisher publisher;
 
-    public MarketDataService(MarketCacheService cacheService,
-                             MarketPricePublisher publisher,
-                             MarketPriceDataRepository repository){
+    public MarketHandleDataService(MarketCacheService cacheService,
+                                   MarketPricePublisher publisher,
+                                   MarketPriceDataRepository repository){
         this.cacheService = cacheService;
         this.repository = repository;
         this.publisher = publisher;
