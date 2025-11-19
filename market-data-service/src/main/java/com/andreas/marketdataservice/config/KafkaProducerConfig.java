@@ -21,7 +21,7 @@ public class KafkaProducerConfig {
     @Value("${kafka.bootstrap-servers}")
     private String host;
 
-    @Value("${kafka.schema-registry")
+    @Value("${kafka.schema-registry}")
     private String schemaRegistry;
 
     @Bean

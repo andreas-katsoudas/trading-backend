@@ -25,7 +25,7 @@ public class MarketDataRetrievalService {
         } catch (Exception e){
             log.warn("Redis unavailable, fetching from DB", e);
         }
-        return  repository.findBySymbol(symbol)
+        return  repository.findTopBySymbolOrderByTimestampDesc(symbol)
                 .map(entity -> new MarketPriceData(entity.getSymbol(), entity.getPrice(), entity.getTimestamp()))
                 .orElse(null);
     }

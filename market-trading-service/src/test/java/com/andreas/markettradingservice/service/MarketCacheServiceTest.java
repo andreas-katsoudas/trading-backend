@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
 
+import static com.andreas.markettradingservice.util.MarketDataTestsUtil.buildDataMock;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
@@ -59,10 +60,6 @@ public class MarketCacheServiceTest {
         service.deleteMarketData("BTC");
 
         verify(redisTemplate, times(1)).delete("BTC");
-    }
-
-    private MarketPriceData buildDataMock(){
-        return new MarketPriceData("BTC", BigDecimal.valueOf(1.992), Instant.now().toEpochMilli());
     }
 
 }
